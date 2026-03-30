@@ -13,16 +13,20 @@ const botoOrdenarDesc = document.getElementById("ordenarDesc");
 let alumnes = [];
 
 // Funcions
-function mostrarMissatge() {
-
+// Mostra un missatge a la pantalla, tipus pot ser "error" o "correcte"
+function mostrarMissatge(text, tipus) {
+    missatge.textContent = text;
+    missatge.className = tipus;
 }
 
 function validarFormulari() {
 
 }
 
-function calcularNotaFinal() {
-
+// Calcula la nota: examen 60%, practiques 30%, actitud 10%
+function calcularNotaFinal(examen, practiques, actitud) {
+    let nota = (examen * 0.6) + (practiques * 0.3) + (actitud * 0.1);
+    return nota;
 }
 
 function afegirAlumne() {
