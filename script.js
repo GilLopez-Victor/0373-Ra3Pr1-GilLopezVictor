@@ -115,8 +115,39 @@ function afegirAlumne(nom, examen, practiques, actitud, notaFinal) {
     mostrarAlumnes();
 }
 
+// Buida la taula i la torna a pintar amb tots els alumnes de l'array
 function mostrarAlumnes() {
-
+    // Borro el que hi havia a la taula
+    cosTaula.innerHTML = "";
+ 
+    // Recorro l'array un per un
+    for (let i = 0; i < alumnes.length; i++) {
+        let alumne = alumnes[i];
+ 
+        // Miro si esta aprovat o suspès
+        let estat = "";
+        let classeEstat = "";
+        if (alumne.notaFinal >= 5) {
+            estat = "Aprovat";
+            classeEstat = "aprovat";
+        } else {
+            estat = "Suspès";
+            classeEstat = "suspes";
+        }
+ 
+        // Creo la fila amb les dades, toFixed(2) per mostrar 2 decimals
+        let fila = "<tr>";
+        fila = fila + "<td>" + alumne.nom + "</td>";
+        fila = fila + "<td>" + alumne.examen.toFixed(2) + "</td>";
+        fila = fila + "<td>" + alumne.practiques.toFixed(2) + "</td>";
+        fila = fila + "<td>" + alumne.actitud.toFixed(2) + "</td>";
+        fila = fila + "<td>" + alumne.notaFinal.toFixed(2) + "</td>";
+        fila = fila + "<td class='" + classeEstat + "'>" + estat + "</td>";
+        fila = fila + "</tr>";
+ 
+        // Afegeixo la fila a la taula
+        cosTaula.innerHTML = cosTaula.innerHTML + fila;
+    }
 }
 
 function ordenarAlumnes() {
