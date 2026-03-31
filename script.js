@@ -150,8 +150,36 @@ function mostrarAlumnes() {
     }
 }
 
-function ordenarAlumnes() {
-
+// Ordena l'array per nota final i torna a mostrar la taula
+function ordenarAlumnes(ordre) {
+    // De menor a major
+    if (ordre == "asc") {
+        alumnes.sort(function(a, b) {
+            if (a.notaFinal > b.notaFinal) {
+                return 1;
+            } else if (a.notaFinal < b.notaFinal) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+    }
+ 
+    // De major a menor
+    if (ordre == "desc") {
+        alumnes.sort(function(a, b) {
+            if (b.notaFinal > a.notaFinal) {
+                return 1;
+            } else if (b.notaFinal < a.notaFinal) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+    }
+ 
+    // Torno a mostrar la taula amb el nou ordre
+    mostrarAlumnes();
 }
 
 // Events dels botons
